@@ -16,19 +16,39 @@ namespace SIM_TRUCK.capa_presentacion
     {
         private static List<Camion> lista_camiones;
         private static List<Chofer> lista_choferes;
-        private Viajes viajeSeleccionado;
+        public Viajes ViajeSeleccionado { get; set; }
         public Usuario usuario;
+
         public frmAsignarViaje(Viajes viajeSeleccionado)
         {
             InitializeComponent();
             lista_camiones = Gestion_Json.Cargar_Archivo<Camion>(@"../../arch_json/camiones.json");
             lista_choferes = Gestion_Json.Cargar_Archivo<Chofer>(@"../../arch_json/choferes.json");
+            CargarCbx();
+        }
 
-            //lblIdViaje.Text = viajeSeleccionado.Id.ToString();
-            //lblFechaInicio.Text = viajeSeleccionado.Inicia.ToString("hh:mm:ss");
-            //lblFechaFin.Text = viajeSeleccionado.Termina.ToString("hh:mm:ss");
-            //lblDuracion.Text = viajeSeleccionado.Duracion.ToString();
-            //lblPago.Text = viajeSeleccionado.Pago.ToString();
+        private void btnTrabajar_Click(object sender, EventArgs e)
+        {
+            int choferSeleccionado = (int)cbxCamion.SelectedValue;
+            int camionSeleccionado = (int)cbxChofer.SelectedValue;
+
+            // Asignar el chofer y camion al viaje
+            ViajeSeleccionado.ChoferId = choferSeleccionado;
+            ViajeSeleccionado.CamionId = camionSeleccionado;
+            ViajeSeleccionado.Estado = "En curso";
+
+            // Devolver el resultado al formulario padre (frmJobs)
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void CargarCbx()
+        {
+            // Filtra la lista de camiones
+            List<Camion> camionesDisponibles = lista_camiones.Where(c => c.Estado == "Disponible").ToList();
+            cbxCamion.DataSource = camionesDisponibles;
+            cbxCamion.DisplayMember = "Modelo";
+            cbxCamion.ValueMember = "Id";
 
             // Filtra la lista de choferes
             List<Chofer> choferesDisponibles = lista_choferes.Where(c => c.Estado == "Disponible").ToList();
@@ -36,29 +56,6 @@ namespace SIM_TRUCK.capa_presentacion
             cbxChofer.DisplayMember = "Nombre";
             cbxChofer.ValueMember = "Id";
 
-            // Filtra la lista de camiones
-            List<Camion> camionesDisponibles = lista_camiones.Where(c => c.Estado == "Disponible").ToList();
-            cbxCamion.DataSource = camionesDisponibles;
-            cbxCamion.DisplayMember = "Modelo";
-            cbxCamion.ValueMember = "Id";
-        }
-
-        private void btnTrabajar_Click(object sender, EventArgs e)
-        {
-            int choferID = (int)cbxCamion.SelectedValue;
-            int camionID = (int)cbxChofer.SelectedValue;
-
-            // Inicia el viaje
-            viajeSeleccionado.ChoferId = choferID;
-            viajeSeleccionado.CamionId = camionID;
-            viajeSeleccionado.Estado = "En curso";
-
-            // Inicia la cuenta regresiva
-            cuentaRegresiva.Start();
-
-            // Deshabilita los combobox
-            cbxChofer.Enabled = false;
-            cbxCamion.Enabled = false;
         }
     }
 }
