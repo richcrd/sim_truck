@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SIM_TRUCK.capa_negocio;
 
 namespace SIM_TRUCK.capa_presentacion
 {
@@ -20,6 +21,8 @@ namespace SIM_TRUCK.capa_presentacion
         private static List<Viajes> lista_viajes;
         public Usuario usuario;
         public Viajes viajeSeleccionado;
+        public Label lblCuentaRegresiva;
+        public Panel pnlCuentaRegresiva;
         #endregion
         public frmJobs(Usuario usuarioLogeado)
         {
@@ -81,48 +84,73 @@ namespace SIM_TRUCK.capa_presentacion
 
         private void btnAsignar_Click(object sender, EventArgs e)
         {
-            Viajes viajeSeleccionado = (Viajes)dgvTrabajos.SelectedRows[0].DataBoundItem;
-            frmAsignarViaje frmAsignarViaje = new frmAsignarViaje(viajeSeleccionado);
-            frmAsignarViaje.ShowDialog();
+            if (dgvTrabajos.SelectedRows.Count > 0)
+            {
+                Viajes viajeSeleccionado = (Viajes)dgvTrabajos.SelectedRows[0].DataBoundItem;
+                frmAsignarViaje fav = new frmAsignarViaje(viajeSeleccionado);
+                var resultado = fav.ShowDialog();
 
-            ListaTrabajos();
+                if(resultado == DialogResult.OK)
+                {
+                    CrearPanelCuentaRegresiva();
+                    // Asigna el viaje seleccionado del formulario hijo al formulario padre
+                    this.viajeSeleccionado = fav.ViajeSeleccionado;
+                    CuentaRegresiva.Start();
+                }
+            }
+            else
+            {
+                Controles.MostrarMensaje("Por favor selecciona un trabajo disponible.", "Error", MessageBoxIcon.Error);
+            }
 
         }
 
         private void CuentaRegresiva_Tick(object sender, EventArgs e)
         {
-            // Actualiza el tiempo restante
-            lblTimer.Text = viajeSeleccionado.Duracion.ToString(@"mm:ss");
-
-            // Si la cuenta regresiva llega a cero
-            if (viajeSeleccionado.Duracion == "00:00:00")
+            // Verificar si el viaje seleccionado no es nulo y tiene una duración válida
+            if (viajeSeleccionado != null && viajeSeleccionado.Duracion > TimeSpan.Zero)
             {
-                // Finaliza el viaje
-                viajeSeleccionado.Estado = "Finalizado";
+                // Actualizar el tiempo restante
+                viajeSeleccionado.Duracion = viajeSeleccionado.Duracion.Subtract(TimeSpan.FromSeconds(1));
+                lblCuentaRegresiva.Text = viajeSeleccionado.Duracion.ToString(@"hh\:mm\:ss");
 
-                // Calcula el pago
-                viajeSeleccionado.Pago = CalcularPago(viajeSeleccionado);
+                // Si la cuenta regresiva llega a cero
+                if (viajeSeleccionado.Duracion == TimeSpan.Zero)
+                {
+                    // Finaliza el viaje
+                    viajeSeleccionado.Estado = "Disponible";
 
-                // Actualiza el balance del usuario
-                usuario.Balance += viajeSeleccionado.Pago;
+                    // Actualiza el balance del usuario
+                    usuario.BalanceDinero += viajeSeleccionado.Pago;
 
-                // Muestra un mensaje al usuario
-                MessageBox.Show("El viaje ha finalizado. El pago se ha realizado.");
+                    // Muestra un mensaje al usuario
+                    MessageBox.Show("El viaje ha finalizado. El pago se ha realizado.");
 
-                // Actualiza la lista de trabajos
-                ListaTrabajos();
-
-                // Cierra el formulario
-                this.Close();
+                    // Actualiza la lista de trabajos
+                    ListaTrabajos();
+                }
             }
+            else
+            {
+                // Detener la cuenta regresiva si el viaje ha sido completado o no hay viaje seleccionado
+                CuentaRegresiva.Stop();
 
-            // Disminuye la duración del viaje
-            viajeSeleccionado.Duracion--;
+                // Eliminar el panel de cuenta regresiva
+                pnlCuentaRegresiva.Controls.Clear();
+            }
         }
 
-        private object CalcularPago(object viajeSeleccionado)
+        private void CrearPanelCuentaRegresiva()
         {
-            throw new NotImplementedException();
+            pnlCuentaRegresiva.Size = new Size(200, 50);
+            pnlCuentaRegresiva.BackColor = Color.LightGray;
+
+            lblCuentaRegresiva.Text = "00:00:00";
+            lblCuentaRegresiva.Size = new Size(50,50);
+            lblCuentaRegresiva.TextAlign = ContentAlignment.MiddleCenter;
+
+            pnlCuentaRegresiva.Controls.Add(lblCuentaRegresiva);
+            panelContenedor3.Controls.Add(pnlCuentaRegresiva);
         }
     }
 }

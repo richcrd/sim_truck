@@ -33,15 +33,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnAsignar = new System.Windows.Forms.Button();
             this.dgvTrabajos = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblTimer = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelContenedor3 = new System.Windows.Forms.FlowLayoutPanel();
             this.CuentaRegresiva = new System.Windows.Forms.Timer(this.components);
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrabajos)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
@@ -96,43 +91,12 @@
             this.dgvTrabajos.Size = new System.Drawing.Size(523, 293);
             this.dgvTrabajos.TabIndex = 0;
             // 
-            // panel2
+            // panelContenedor3
             // 
-            this.panel2.BackColor = System.Drawing.Color.NavajoWhite;
-            this.panel2.Controls.Add(this.lblTimer);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(174, 56);
-            this.panel2.TabIndex = 6;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 17);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Trabajo 1";
-            // 
-            // lblTimer
-            // 
-            this.lblTimer.AutoSize = true;
-            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimer.Location = new System.Drawing.Point(110, 29);
-            this.lblTimer.Name = "lblTimer";
-            this.lblTimer.Size = new System.Drawing.Size(49, 13);
-            this.lblTimer.TabIndex = 1;
-            this.lblTimer.Text = "00:00:00";
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.panel2);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(589, 29);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(199, 363);
-            this.flowLayoutPanel1.TabIndex = 7;
+            this.panelContenedor3.Location = new System.Drawing.Point(589, 29);
+            this.panelContenedor3.Name = "panelContenedor3";
+            this.panelContenedor3.Size = new System.Drawing.Size(199, 363);
+            this.panelContenedor3.TabIndex = 7;
             // 
             // CuentaRegresiva
             // 
@@ -143,16 +107,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.panelContenedor3);
             this.Controls.Add(this.panel3);
             this.Name = "frmJobs";
             this.Text = "frmJobs";
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrabajos)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -163,10 +124,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnAsignar;
         private System.Windows.Forms.DataGridView dgvTrabajos;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblTimer;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel panelContenedor3;
         private System.Windows.Forms.Timer CuentaRegresiva;
     }
 }
