@@ -128,6 +128,19 @@ namespace SIM_TRUCK.capa_presentacion
 
                     // Actualiza la lista de trabajos
                     ListaTrabajos();
+                    ActualizarBalanceDinero();
+
+                    // Actualizamos la lista de camiones del usuario logeado en la lista del usuario
+                    foreach (var user in lista_usuarios)
+                    {
+                        if (user.Id == usuario.Id)
+                        {
+                            user.BalanceDinero = usuario.BalanceDinero;
+                            break;
+                        }
+                    }
+
+                    Gestion_Json.Guardar_Archivo(lista_usuarios, @"../../arch_json/usuarios.json");
                 }
             }
             else
