@@ -1,0 +1,72 @@
+[
+ {
+        "Id": 1,
+        "Nombre": "Juan Pérez",
+        "Experiencia": 2,
+        "Estado": "disponible",
+        "Salario": 5500
+    },
+    {
+        "Id": 2,
+        "Nombre": "María Rodríguez",
+        "Experiencia": 8,
+        "Estado": "disponible",
+        "Salario": 12000
+    },
+    {
+        "Id": 3,
+        "Nombre": "Carlos García",
+        "Experiencia": 3,
+        "Estado": "disponible",
+        "Salario": 8000
+    },
+    {
+        "Id": 4,
+        "Nombre": "Ana Martínez",
+        "Experiencia": 1,
+        "Estado": "disponible",
+        "Salario": 6000
+    },
+    {
+        "Id": 5,
+        "Nombre": "Pedro López",
+        "Experiencia": 7,
+        "Estado": "disponible",
+        "Salario": 13000
+    },
+    {
+        "Id": 6,
+        "Nombre": "Laura Hernández",
+        "Experiencia": 5,
+        "Estado": "disponible",
+        "Salario": 10000
+    },
+    {
+        "Id": 7,
+        "Nombre": "Sofía Díaz",
+        "Experiencia": 2,
+        "Estado": "disponible",
+        "Salario": 7000
+    },
+    {
+        "Id": 8,
+        "Nombre": "Diego Martín",
+        "Experiencia": 9,
+        "Estado": "disponible",
+        "Salario": 14000
+    },
+    {
+        "Id": 9,
+        "Nombre": "Elena Pérez",
+        "Experiencia": 6,
+        "Estado": "disponible",
+        "Salario": 11000
+    },
+    {
+        "Id": 10,
+        "Nombre": "Javier Sánchez",
+        "Experiencia": 0,
+        "Estado": "disponible",
+        "Salario": 5000
+    }
+]

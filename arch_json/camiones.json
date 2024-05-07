@@ -1,0 +1,37 @@
+[
+    {
+        "Id": 1,
+        "Modelo": "Volvo FH16",
+        "Capacidad": "500 HP",
+        "Estado": "Disponible",
+        "Precio": 15000
+    },
+    {
+        "Id": 2,
+        "Modelo": "Scania R730",
+        "Capacidad": "730 HP",
+        "Estado": "Disponible",
+        "Precio": 12000
+    },
+    {
+        "Id": 3,
+        "Modelo": "Mercedes-Benz Actros",
+        "Capacidad": "450 HP",
+        "Estado": "Disponible",
+        "Precio": 16000
+    },
+    {
+        "Id": 4,
+        "Modelo": "MAN TGX",
+        "Capacidad": "480 HP",
+        "Estado": "Disponible",
+        "Precio": 11000
+    },
+    {
+        "Id": 5,
+        "Modelo": "DAF XF",
+        "Capacidad": "510 HP",
+        "Estado": "Disponible",
+        "Precio": 14000
+    }
+]

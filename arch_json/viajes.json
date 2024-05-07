@@ -1,0 +1,13 @@
+[
+ {
+        "Id": 1,
+        "CamionId": 1,
+        "ChoferId": 1,
+        "Inicia": "San Francisco, CA",
+        "Termina": "Los Angeles, CA",
+        "Duracion": 00:03:00,
+        "Pago": 500,
+        "Estado": "En curso"
+    }
+]
+

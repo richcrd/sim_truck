@@ -1,0 +1,24 @@
+[
+  {
+    "Id": 1,
+    "Nombre": "Richard",
+    "Contrasena": "123",
+    "BalanceDinero": 25000,
+    "Choferes": [],
+    "Camiones": [],
+    "Viajes": []
+  },
+  {
+    "Id": 2,
+    "Nombre": "Alex",
+    "Contrasena": "123",
+    "BalanceDinero": 16000,
+    "Choferes": [
+      2
+    ],
+    "Camiones": [
+      2
+    ],
+    "Viajes": []
+  }
+]
